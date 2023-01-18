@@ -1,10 +1,10 @@
-package ru.krasnov.jetbrains.metricservice;
+package ru.krasnov.jetbrains.build_tracker_store;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MetricServiceApplicationTests {
+class BuildTrackerStoreApplicationTests {
 
     @Test
     void contextLoads() {

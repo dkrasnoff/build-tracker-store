@@ -1,0 +1,15 @@
+spring:
+  liquibase:
+    enabled: true
+    change-log: db/changelog/master-changelog.xml
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL10Dialect
+  datasource:
+    url: ${datasourceInternalUrl:jdbc:postgresql://localhost:5432/tracking_build}
+    username: ${datasourceInternalUsername:postgres}
+    password: ${datasourceInternalPassword:password}
+    driver-class-name: org.postgresql.Driver

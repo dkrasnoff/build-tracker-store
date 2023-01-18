@@ -1,0 +1,51 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="create_executed_build_table" author="d.krasnov">
+        <preConditions>
+            <not>
+                <tableExists tableName="executed_build"/>
+            </not>
+        </preConditions>
+        <createTable tableName="executed_build">
+            <column name="id" type="uuid" >
+                <constraints primaryKeyName="executed_build_pk"
+                             primaryKey="true"
+                             nullable="false"/>
+            </column>
+            <column name="host" type="varchar"/>
+            <column name="requested_task_names" type="varchar"/>
+            <column name="start_timestamp" type="timestamp"/>
+            <column name="end_timestamp" type="timestamp"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create_executed_task_table" author="d.krasnov">
+        <preConditions>
+            <not>
+                <tableExists tableName="executed_task"/>
+            </not>
+        </preConditions>
+        <createTable tableName="executed_task">
+            <column name="id" type="uuid" >
+                <constraints primaryKeyName="executed_task_pk"
+                             primaryKey="true"
+                             nullable="false"/>
+            </column>
+            <column name="build_id" type="uuid">
+                <constraints foreignKeyName="build_id_fk"
+                             nullable="false"/>
+            </column>
+            <column name="name" type="varchar"/>
+            <column name="start_timestamp" type="timestamp"/>
+            <column name="end_timestamp" type="timestamp"/>
+        </createTable>
+
+
+    </changeSet>
+
+
+</databaseChangeLog>
