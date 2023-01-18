@@ -1,0 +1,41 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>All Executed Builds</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1> Executed builds </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th> Host / Requested tasks / Build start time</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:if="${executedBuilds.isEmpty()}">
+                    <td colspan="2"> No Executed Build Available</td>
+                </tr>
+                <tr th:each="executedBuild : ${executedBuilds}" style="cursor: pointer"
+                    th:href="@{'/task/' + ${executedBuild.getId()}}">
+                    <td>
+                        <a th:href="@{'/task/' + ${executedBuild.getId()}}"
+                           th:text="${executedBuild.getHost()} + ' / ' +
+                            ${executedBuild.getRequestedTaskNames()} + ' / ' +
+                             ${executedBuild.getBuildStartTimestamp()}" />
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

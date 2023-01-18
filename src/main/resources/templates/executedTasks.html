@@ -1,0 +1,53 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Executed tasks</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+</head>
+<body>
+<div class="container">
+    <a class="btn btn-info" href="#" th:href="@{/build}"> Back to all Executed Builds </a>
+    <div class="row">
+        <div class="col-md-12">
+            <h1>
+                <span th:text="'Executed tasks for build ' + ${buildId}">
+                    Executed tasks for build
+                </span>
+            </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th> Task ID</th>
+                    <th> Name</th>
+                    <th> Start time</th>
+                    <th> End time</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:if="${executedTasks.isEmpty()}">
+                    <td colspan="2"> No Executed Tasks Available</td>
+                </tr>
+                <tr th:each="executedTask : ${executedTasks}">
+                    <td>
+                        <span th:text="${executedTask.getId()}"> ID </span>
+                    </td>
+                    <td>
+                        <span th:text="${executedTask.getName()}"> Name </span>
+                    </td>
+                    <td>
+                        <span th:text="${executedTask.getExecutionStartTimestamp()}"> Start time </span>
+                    </td>
+                    <td>
+                        <span th:text="${executedTask.getExecutionEndTimestamp()}"> End time </span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

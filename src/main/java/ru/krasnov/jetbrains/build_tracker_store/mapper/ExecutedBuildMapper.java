@@ -22,4 +22,9 @@ public interface ExecutedBuildMapper {
     }
 
     ExecutedBuild mapToEntity(ExecutedBuildDto executedBuildDto);
+
+    @Mapping(target = "executedTasks", ignore = true)
+    ExecutedBuildDto mapToServiceDto(ExecutedBuild executedBuild);
+
+    List<ExecutedBuildDto> mapToServiceDtoList(List<ExecutedBuild> executedBuilds);
 }
