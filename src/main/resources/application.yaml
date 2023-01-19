@@ -1,3 +1,5 @@
+server:
+  port: ${buildTrackerStorePort:8080}
 spring:
   liquibase:
     enabled: true
